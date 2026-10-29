@@ -1,0 +1,26 @@
+SkillPath/
+│
+├── index.html
+├── dashboard.html
+├── roadmap.html
+├── certificate.html
+│
+├── css/
+│   ├── style.css
+│   ├── dashboard.css
+│   ├── roadmap.css
+│   └── certificate.css
+│
+├── js/
+│   ├── app.js
+│   ├── data.js
+│   ├── roadmap.js
+│   ├── storage.js
+│   └── certificate.js
+│
+├── assets/
+│   ├── logo.png
+│   ├── bg.jpg
+│   └── icons/
+│
+└── README.md

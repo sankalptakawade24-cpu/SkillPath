@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SkillPath Certificate</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .certificate {
+            width: 900px;
+            max-width: 100%;
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .3);
+        }
+
+        .border {
+            border: 8px solid #2563eb;
+            border-radius: 15px;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 48px;
+            color: #2563eb;
+        }
+
+        h2 {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .name {
+            font-size: 42px;
+            font-weight: 700;
+            color: #111827;
+            margin: 25px 0;
+        }
+
+        .course {
+            font-size: 28px;
+            color: #1d4ed8;
+            font-weight: 600;
+            margin: 20px 0;
+        }
+
+        .desc {
+            color: #666;
+            margin-top: 15px;
+            line-height: 1.8;
+        }
+
+        .seal {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 6px solid gold;
+            margin: 40px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+            background: #fff8dc;
+        }
+
+        .bottom {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .sign {
+            width: 220px;
+        }
+
+        .line {
+            border-top: 2px solid black;
+            margin-top: 8px;
+        }
+
+        .btns {
+            margin-top: 40px;
+        }
+
+        button {
+
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+            color: white;
+            font-size: 16px;
+        }
+
+        .print {
+            background: #2563eb;
+        }
+
+        .home {
+            background: #16a34a;
+        }
+
+        @media print {
+
+            body {
+                background: white;
+            }
+
+            .btns {
+                display: none;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="certificate">
+
+        <div class="border">
+
+            <h1>Certificate of Completion</h1>
+
+            <h2>This Certificate is Proudly Presented To</h2>
+
+            <div class="name" id="studentName">
+                Student
+            </div>
+
+            <p class="desc">
+
+                for successfully completing the interactive learning roadmap in
+
+            </p>
+
+            <div class="course" id="courseName">
+
+                Web Development
+
+            </div>
+
+            <p class="desc">
+
+                and demonstrating dedication, consistency and passion towards
+                continuous learning using the SkillPath platform.
+
+            </p>
+
+            <div class="seal">
+
+                🏆
+
+            </div>
+
+            <div class="bottom">
+
+                <div class="sign">
+
+                    <strong id="date"></strong>
+
+                    <div class="line"></div>
+
+                    Date
+
+                </div>
+
+                <div class="sign">
+
+                    SkillPath Academy
+
+                    <div class="line"></div>
+
+                    Authorized Signature
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="btns">
+
+            <button class="print" onclick="window.print()">
+
+                🖨 Print / Save PDF
+
+            </button>
+
+            <button class="home" onclick="window.location='index.html'">
+
+                🏠 Home
+
+            </button>
+
+        </div>
+
+    </div>
+
+<script>
+
+let name = localStorage.getItem("studentName");
+
+if(name==null || name=="")
+{
+    name="Student";
+}
+
+document.getElementById("studentName").innerHTML=name;
+
+let career=localStorage.getItem("career");
+
+if(career==null)
+{
+    career="Web Development";
+}
+
+document.getElementById("courseName").innerHTML=career;
+
+const today=new Date();
+
+document.getElementById("date").innerHTML=today.toLocaleDateString();
+
+</script>
+
+</body>
+
+</html>

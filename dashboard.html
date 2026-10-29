@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | SkillPath</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <link rel="stylesheet" href="css/dashboard.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <i class="fa-solid fa-route"></i>
+            <span>SkillPath</span>
+        </div>
+
+        <a href="index.html" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i> Home
+        </a>
+
+    </nav>
+
+    <!-- Header -->
+
+    <section class="header">
+
+        <h1>Welcome 👋</h1>
+
+        <p>
+            Select your career path and generate your personalized learning roadmap.
+        </p>
+
+    </section>
+
+    <!-- Career Selection -->
+
+    <section class="career-section">
+
+        <h2>Select Your Career</h2>
+
+        <div class="career-grid">
+
+            <div class="career-card" data-career="Web Development">
+                <i class="fa-solid fa-code"></i>
+                <h3>Web Development</h3>
+            </div>
+
+            <div class="career-card" data-career="Python Development">
+                <i class="fa-brands fa-python"></i>
+                <h3>Python Development</h3>
+            </div>
+
+            <div class="career-card" data-career="Cyber Security">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Cyber Security</h3>
+            </div>
+
+            <div class="career-card" data-career="Artificial Intelligence">
+                <i class="fa-solid fa-brain"></i>
+                <h3>Artificial Intelligence</h3>
+            </div>
+
+            <div class="career-card" data-career="Android Development">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <h3>Android Development</h3>
+            </div>
+
+            <div class="career-card" data-career="Cloud Computing">
+                <i class="fa-solid fa-cloud"></i>
+                <h3>Cloud Computing</h3>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Preferences -->
+
+    <section class="preferences">
+
+        <h2>Learning Preferences</h2>
+
+        <div class="form-group">
+
+            <label>Current Skill Level</label>
+
+            <select id="level">
+
+                <option>Beginner</option>
+
+                <option>Intermediate</option>
+
+                <option>Advanced</option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Hours Per Week</label>
+
+            <select id="hours">
+
+                <option>5 Hours</option>
+
+                <option>10 Hours</option>
+
+                <option>15 Hours</option>
+
+                <option>20+ Hours</option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Learning Goal</label>
+
+            <select id="goal">
+
+                <option>Get a Job</option>
+
+                <option>Freelancing</option>
+
+                <option>College Project</option>
+
+                <option>Personal Learning</option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+    <!-- Selected Career -->
+
+    <section class="summary">
+
+        <div class="summary-card">
+
+            <h2>Your Selection</h2>
+
+            <p>
+                Career :
+                <span id="selectedCareer">
+                    Not Selected
+                </span>
+            </p>
+
+            <p>
+                Level :
+                <span id="selectedLevel">
+                    Beginner
+                </span>
+            </p>
+
+            <p>
+                Weekly Hours :
+                <span id="selectedHours">
+                    5 Hours
+                </span>
+            </p>
+
+            <p>
+                Goal :
+                <span id="selectedGoal">
+                    Get a Job
+                </span>
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- Generate Button -->
+
+    <section class="generate">
+
+        <button id="generateBtn">
+
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+            Generate Roadmap
+
+        </button>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+
+            © 2026 SkillPath | Interactive Career Roadmap Generator
+
+        </p>
+
+    </footer>
+
+    <script>
+
+        let selectedCareer = "";
+
+        const cards = document.querySelectorAll(".career-card");
+
+        const careerText = document.getElementById("selectedCareer");
+
+        cards.forEach(card => {
+
+            card.addEventListener("click", () => {
+
+                cards.forEach(c => c.classList.remove("active"));
+
+                card.classList.add("active");
+
+                selectedCareer = card.dataset.career;
+
+                careerText.innerText = selectedCareer;
+
+            });
+
+        });
+
+        document.getElementById("level").addEventListener("change", function () {
+
+            document.getElementById("selectedLevel").innerText = this.value;
+
+        });
+
+        document.getElementById("hours").addEventListener("change", function () {
+
+            document.getElementById("selectedHours").innerText = this.value;
+
+        });
+
+        document.getElementById("goal").addEventListener("change", function () {
+
+            document.getElementById("selectedGoal").innerText = this.value;
+
+        });
+
+        document.getElementById("generateBtn").addEventListener("click", () => {
+
+            if (selectedCareer === "") {
+
+                alert("Please select a career.");
+
+                return;
+
+            }
+
+            localStorage.setItem("career", selectedCareer);
+
+            localStorage.setItem("level", document.getElementById("level").value);
+
+            localStorage.setItem("hours", document.getElementById("hours").value);
+
+            localStorage.setItem("goal", document.getElementById("goal").value);
+
+            window.location.href = "roadmap.html";
+
+        });
+
+    </script>
+
+</body>
+
+</html>
